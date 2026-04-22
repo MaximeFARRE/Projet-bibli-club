@@ -74,3 +74,28 @@ def process_retour(id_livre: int, commentaire: str = ""):
 def get_tout_historique():
     return historique_repository.get_historique()
 
+def get_emprunts_en_retard():
+    """
+    Retourne la liste des emprunts actuellement en retard,
+    avec le nombre de jours de retard calculé.
+    """
+    historique = get_tout_historique()
+    maintenant = datetime.now()
+    retards = []
+    
+    for emprunt in historique:
+        if emprunt.get("date_retour") is None: # L'emprunt est toujours en cours
+            date_prevue_str = emprunt.get("date_retour_prevue")
+            if date_prevue_str:
+                try:
+                    date_prevue = datetime.strptime(date_prevue_str, "%Y-%m-%d %H:%M:%S")
+                    if maintenant > date_prevue:
+                        jours_retard = (maintenant - date_prevue).days
+                        emprunt["jours_retard"] = jours_retard
+                        retards.append(emprunt)
+                except ValueError:
+                    continue
+                    
+    # Trier par nombre de jours de retard (le plus long en premier)
+    retards.sort(key=lambda x: x.get("jours_retard", 0), reverse=True)
+    return retards
