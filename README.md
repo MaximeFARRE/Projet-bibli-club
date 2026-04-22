@@ -31,8 +31,8 @@ Built as a custom tool for the Club Entrepreneur (Campus Léonard de Vinci), thi
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/MaximeFARRE/Projet-bibli-club.git
-   cd Projet-bibli-club
+   git clone https://github.com/MaximeFARRE/club-entrepreneur-library.git
+   cd club-entrepreneur-library
    ```
 2. **Create a virtual environment & install dependencies:**
    ```bash
