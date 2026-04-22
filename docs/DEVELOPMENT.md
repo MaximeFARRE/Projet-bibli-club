@@ -1,27 +1,26 @@
 # Development Guide
 
 ## Environment Setup
-1. Clone the repository.
+1. Clone the repository and navigate to the project root.
 2. Create a virtual environment: `python -m venv venv`
-3. Activate the environment and run: `pip install -r requirements.txt`
+3. Activate the environment: `source venv/bin/activate`
+4. Install dependencies: `pip install -r requirements.txt`
 
 ## Adding a New Page
-To add a new feature page to the application:
-1. Create a new Python file in the `pages/` directory.
+Streamlit natively handles routing via the file system.
+To add a new feature page:
+1. Create a Python file in the `pages/` directory.
 2. Prefix it with the next logical number (e.g., `07_Statistiques.py`).
-3. Streamlit will automatically detect and add it to the sidebar.
 
-## Managing the Database
-The project uses SQLite and the Peewee ORM.
-- The database file is located at `data/bibliotheque.db`.
-- Schema modifications should be done by updating the models in `database.py`.
+## Database Configuration (Local vs Cloud)
+By default, the application uses a local SQLite database (`data/bibliotheque.db`).
 
-## Local Secrets
-For features like email notifications, do not hardcode credentials. Use Streamlit's secrets management by placing your configurations in `.streamlit/secrets.toml` (this file is git-ignored).
-
-## Neon PostgreSQL Setup
-To connect to a Neon database instead of local SQLite, add the following to your `.streamlit/secrets.toml`:
-
+**To use Neon PostgreSQL:**
+Create a `.streamlit/secrets.toml` file at the root of the project (this file is git-ignored) and add your connection string:
 ```toml
 DATABASE_URL = "postgresql://user:password@ep-cool-pine-123456.eu-central-1.aws.neon.tech/dbname"
 ```
+The `database.py` factory will automatically detect this and switch to the Postgres driver.
+
+## Testing Notifications
+Do not hardcode SMTP credentials. Add them to your `.streamlit/secrets.toml` to safely test the email features locally.

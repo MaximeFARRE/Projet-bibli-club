@@ -1,66 +1,79 @@
-# Projet Bibli Club
+# 📚 Bibli Club Manager
+
+> A lightweight, robust Streamlit web application to manage a book club's library and borrowing history.
 
 ![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=Streamlit&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-07405E?style=flat&logo=sqlite&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-A Streamlit web application to manage a book club's library. It handles book cataloging, borrowing, returning, history tracking, and notifications.
+## Project Purpose
+Bibli Club Manager is designed to replace chaotic spreadsheets for small to medium reading groups. It centralizes the book catalog, tracks who borrowed what, enforces return dates, and automatically sends email reminders to late borrowers.
 
-## Features
-- **Catalog Management**: View and search the book collection.
-- **Book Operations**: Add new books and manage inventory.
-- **Borrowing & Returns**: Track who borrowed what and when it is due.
-- **History**: Keep a ledger of all past borrowing activity.
-- **Notifications**: Automated email reminders for late returns.
+## Main Features
+- **Catalog Management**: View, search, and filter the book collection.
+- **Inventory Operations**: Add new books, archive lost ones, and manage availability.
+- **Borrowing & Returns**: Track active loans and automatically calculate due dates.
+- **Full Ledger**: Maintain a complete history of all past borrowing activity.
+- **Automated Notifications**: Send email reminders for overdue books.
+- **Dual Database Support**: Runs locally on SQLite or in the cloud via Neon PostgreSQL.
 
-## Tech Stack
-- **Frontend / UI**: [Streamlit](https://streamlit.io/)
-- **Database**: SQLite with `peewee` ORM
-- **Data Manipulation**: `pandas`
-- **Emailing**: `smtplib` / `email`
+## Technologies
+- **Frontend & App Framework**: [Streamlit](https://streamlit.io/)
+- **Data Persistence**: SQLite (local dev) / PostgreSQL (production via `psycopg2`)
+- **Data Processing**: Pandas
 
-## Installation
+---
 
-1. Clone the repository:
+## 📸 Screenshots
+*(Placeholder: Add a screenshot of the Catalog page here)*
+`![Catalog View](assets/demo-catalog.png)`
+
+*(Placeholder: Add a screenshot of the Borrowing interface here)*
+`![Borrowing View](assets/demo-borrow.png)`
+
+---
+
+## Installation & Usage
+
+1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/MaximeFARRE/Projet-bibli-club.git
    cd Projet-bibli-club
    ```
-2. Create and activate a virtual environment (recommended):
+2. **Create a virtual environment & install dependencies:**
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-3. Install dependencies:
-   ```bash
+   source venv/bin/activate  # Windows: venv\Scripts\activate
    pip install -r requirements.txt
    ```
-
-## Usage
-
-Run the Streamlit application:
-```bash
-streamlit run Accueil.py
-```
-The application will open in your default web browser at `http://localhost:8501`.
+3. **Run the application:**
+   ```bash
+   streamlit run Accueil.py
+   ```
 
 ## Repository Structure
 ```text
 .
 ├── Accueil.py               # Main application entry point
-├── assets/                  # Images and static assets
-├── data/                    # SQLite database storage (ignored in git)
-├── database.py              # Database connection and ORM models
-├── email_utils.py           # Email sending utilities
-├── notifications.py         # Notification logic
-├── pages/                   # Streamlit sub-pages
+├── assets/                  # Static assets (logos, icons)
+├── data/                    # Local SQLite database (ignored)
+├── database.py              # Data access layer & DB connection factory
+├── email_utils.py           # SMTP email utilities
+├── notifications.py         # Business logic for late returns
+├── pages/                   # Streamlit UI views
 └── requirements.txt         # Project dependencies
 ```
 
+## Roadmap
+- [ ] Add user authentication and roles (Admin vs Member).
+- [ ] Implement barcode/ISBN scanning for faster book entry.
+- [ ] Deploy to Streamlit Community Cloud.
+
 ## Limitations
-- Designed for small to medium book clubs.
-- Uses a local SQLite database (not suitable for highly concurrent deployments without modification).
+- Designed for single-tenant book clubs. 
+- The notification system requires a configured SMTP server via Streamlit secrets.
 
 ## Contributors
 - Maxime FARRE
