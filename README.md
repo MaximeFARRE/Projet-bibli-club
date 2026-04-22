@@ -24,14 +24,6 @@ Built as a custom tool for the Club Entrepreneur (Campus Léonard de Vinci), thi
 - **Data Persistence**: SQLite (local dev) / PostgreSQL (production via `psycopg2`)
 - **Data Processing**: Pandas
 
----
-
-## 📸 Screenshots
-*(Placeholder: Add a screenshot of the Catalog page here)*
-`![Catalog View](assets/demo-catalog.png)`
-
-*(Placeholder: Add a screenshot of the Borrowing interface here)*
-`![Borrowing View](assets/demo-borrow.png)`
 
 ---
 
