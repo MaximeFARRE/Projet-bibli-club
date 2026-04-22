@@ -34,6 +34,9 @@ The rules below must be followed strictly.
   - `chore: update .gitignore`
 - Commit frequently. A large task should usually produce several commits.
 - Never leave many modified files uncommitted.
+- **MANDATORY**: Make at least 1 commit per file modified or created. You can and should make multiple commits on the same file if you add multiple functions.
+- **MANDATORY**: Create a new commit for each notable function or feature created.
+- **MANDATORY**: Never exceed 200 lines of code changed in a single commit. Stop and commit before continuing.
 
 ---
 
