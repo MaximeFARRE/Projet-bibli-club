@@ -90,5 +90,17 @@ with col3:
 with col4:
     st.metric("Livres en retard", nb_retards, delta="-Attention" if nb_retards > 0 else "OK", delta_color="inverse")
 
+if nb_retards > 0:
+    st.markdown("### 🚨 Liste rapide des retards")
+    retards_formatted = []
+    for r in retards:
+        retards_formatted.append({
+            "Titre": r.get("titre", "Inconnu"),
+            "Emprunteur": f"{r.get('emprunteur', '')} ({r.get('emprunteur_email', '')})",
+            "Date prévue": r.get("date_retour_prevue", "")[:10],
+            "Jours de retard": r.get("jours_retard", 0)
+        })
+    st.dataframe(retards_formatted, use_container_width=True, hide_index=True)
+
 st.markdown("---")
 st.markdown("© 2025 Club Entrepreneurs - Tous droits réservés.")
